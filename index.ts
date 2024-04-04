@@ -8,14 +8,14 @@ async function createTodo(arr: string[]) {
     let ans = await inquirer.prompt({
       type: "list",
       name: "opt",
-      message: "select a option",
+      message: "Which of operation you to perform",
       choices: ["add", "update", "view", "delete"],
     });
 
     if (ans.opt == "add") {
       let add1 = await inquirer.prompt({
         type: "input",
-        message: "add item",
+        message: "What do you want to add in todo",
         name: "todo",
       });
       Todos.push(add1.todo);
@@ -24,13 +24,13 @@ async function createTodo(arr: string[]) {
     if (ans.opt == "update") {
       let updatetodo = await inquirer.prompt({
         type: "list",
-        message: "select item to uptade",
+        message: "Which one you want to update",
         name: "todo",
         choices: Todos.map((item) => item),
       });
       let AddTodo = await inquirer.prompt({
         type: "input",
-        message: "add item",
+        message: "What do you want add again",
         name: "todo",
       });
       let newtodo = Todos.filter((val) => val !== updatetodo.todo);
@@ -43,7 +43,7 @@ async function createTodo(arr: string[]) {
     if (ans.opt == "delete") {
       let deleteTodo = await inquirer.prompt({
         type: "list",
-        message: "select to delete the item",
+        message: "What to you want to delete",
         name: "todo",
         choices: Todos.map((item) => item),
       });
